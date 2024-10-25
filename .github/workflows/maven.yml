@@ -62,13 +62,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Guo-KeCheng_cicd-demo
+
   snyk:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3 # Changed from checkout@master to checkout@v3
       - name: Run Snyk to check for vulnerabilities
-    uses: snyk/actions/maven@master
-    continue-on-error: true # To make sure that SARIF upload gets called
-    env:
-    SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        uses: snyk/actions/maven@master
+        continue-on-error: true # To make sure that SARIF upload gets called
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
