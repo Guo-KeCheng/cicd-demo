@@ -30,6 +30,7 @@
         <java.version>17</java.version>
 		<sonar.organization>guo-kecheng</sonar.organization>
     	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.projectKey>Guo-KeCheng_cicd-demo</sonar.projectKey>
     </properties>
     <dependencies>
         <dependency>
